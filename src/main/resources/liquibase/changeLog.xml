@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="max">
+        <sql>
+            CREATE TABLE `sso_db`.`user`(
+            `id` INT NOT NULL AUTO_INCREMENT,
+            `name` VARCHAR(70),
+            `password` VARCHAR(70) NOT NULL,
+            `username` VARCHAR(30) NOT NULL,
+            `email` VARCHAR(40),
+            PRIMARY KEY (`id`))
+        </sql>
+    </changeSet>
+
+
+    <changeSet id="2" author="max">
+        <sql>
+            CREATE TABLE `sso_db`.`role`(
+            `id` INT NOT NULL AUTO_INCREMENT,
+            `rolename` VARCHAR(20),
+            PRIMARY KEY (`id`),
+            UNIQUE INDEX `rolename_UNIQUE`(`rolename` ASC));
+        </sql>
+    </changeSet>
+</databaseChangeLog>
