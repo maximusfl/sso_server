@@ -27,6 +27,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.4.4.Final</version>
+        </dependency>
+
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
@@ -126,6 +132,14 @@
             <version>3.0.8</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>3.1.0.RELEASE</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -152,6 +166,7 @@
                     <driver>com.mysql.jdbc.Driver</driver>
                     <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
                     <propertyFile>liquibase/liquibase.properties</propertyFile>
+
                 </configuration>
             </plugin>
         </plugins>

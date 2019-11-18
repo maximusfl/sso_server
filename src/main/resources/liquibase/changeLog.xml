@@ -4,26 +4,120 @@
                    xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="1" author="max">
-        <sql>
-            CREATE TABLE `sso_db`.`user`(
-            `id` INT NOT NULL AUTO_INCREMENT,
-            `name` VARCHAR(70),
-            `password` VARCHAR(70) NOT NULL,
-            `username` VARCHAR(30) NOT NULL,
-            `email` VARCHAR(40),
-            PRIMARY KEY (`id`))
-        </sql>
-    </changeSet>
+<!--    <changeSet id="1" author="max">-->
+<!--        <sql>-->
+<!--            CREATE TABLE `sso_db`.`app_user`(-->
+<!--            `id` INT NOT NULL AUTO_INCREMENT,-->
+<!--            `name` VARCHAR(70),-->
+<!--            `password` VARCHAR(70) NOT NULL,-->
+<!--            `username` VARCHAR(30) NOT NULL,-->
+<!--            `email` VARCHAR(40),-->
+<!--            PRIMARY KEY (`id`))-->
+<!--        </sql>-->
+<!--    </changeSet>-->
 
 
-    <changeSet id="2" author="max">
-        <sql>
-            CREATE TABLE `sso_db`.`role`(
-            `id` INT NOT NULL AUTO_INCREMENT,
-            `rolename` VARCHAR(20),
-            PRIMARY KEY (`id`),
-            UNIQUE INDEX `rolename_UNIQUE`(`rolename` ASC));
-        </sql>
-    </changeSet>
+<!--    <changeSet id="2" author="max">-->
+<!--        <sql>-->
+<!--            CREATE TABLE `sso_db`.`app`(-->
+<!--            `id` INT NOT NULL AUTO_INCREMENT,-->
+<!--            `app_url` VARCHAR(50),-->
+<!--            PRIMARY KEY (`id`));-->
+<!--        </sql>-->
+<!--    </changeSet>-->
+
+<!--    <changeSet id="3" author="max">-->
+<!--        <sql>-->
+<!--            CREATE TABLE `sso_db`.`app_role`(-->
+<!--            `app_id` INT NOT NULL,-->
+<!--            `role_id` INT NOT NULL,-->
+<!--            `role_name` VARCHAR(20) NOT NULL,-->
+<!--            `role_description` VARCHAR(150),-->
+<!--            PRIMARY KEY (`app_id`),-->
+<!--            UNIQUE INDEX `role_id_UNIQUE` (`role_id` ASC));-->
+<!--        </sql>-->
+<!--    </changeSet>-->
+
+<!--    <changeSet id="4" author="max">-->
+<!--        <sql>-->
+<!--            CREATE TABLE `sso_db`.`user_role`(-->
+<!--            `user_id` INT NOT NULL,-->
+<!--            `role_id` INT NOT NULL,-->
+<!--            PRIMARY KEY(`user_id`,`role_id`));-->
+<!--        </sql>-->
+<!--    </changeSet>-->
+
+<!--    <changeSet id="5" author="max">-->
+<!--        <sql>-->
+<!--            CREATE TABLE `sso_db`.`session` (-->
+<!--            `session_id` INT NOT NULL,-->
+<!--            `user_id` INT NOT NULL,-->
+<!--            `create_time` DATETIME NOT NULL,-->
+<!--            PRIMARY KEY (`session_id`));-->
+<!--        </sql>-->
+<!--    </changeSet>-->
+
+<!--    &lt;!&ndash;    add constraints&ndash;&gt;-->
+
+
+<!--    <changeSet id="6" author="max">-->
+<!--        <sql>-->
+<!--            ALTER TABLE `sso_db`.`app_role`-->
+<!--            ADD CONSTRAINT `fk_app_role_app`-->
+<!--            FOREIGN KEY(`app_id`)-->
+<!--            REFERENCES `sso_db`.`app`(`id`)-->
+<!--            ON DELETE NO ACTION-->
+<!--            ON UPDATE NO ACTION;-->
+<!--        </sql>-->
+<!--    </changeSet>-->
+
+
+<!--    <changeSet id="7" author="max">-->
+<!--        <sql>-->
+<!--            ALTER TABLE `sso_db`.`user_role`-->
+<!--            ADD CONSTRAINT `fk_user_role_app_role`-->
+<!--            FOREIGN KEY(`role_id`)-->
+<!--            REFERENCES `sso_db`.`app_role`(`role_id`)-->
+<!--            ON DELETE NO ACTION-->
+<!--            ON UPDATE NO ACTION,-->
+<!--            ADD CONSTRAINT `fk_user_role_app_user`-->
+<!--            FOREIGN KEY(`user_id`)-->
+<!--            REFERENCES `sso_db`.`app_user` (`id`)-->
+<!--            ON DELETE NO ACTION-->
+<!--            ON UPDATE NO ACTION;-->
+<!--        </sql>-->
+<!--    </changeSet>-->
+
+<!--    <changeSet id="8" author="max">-->
+<!--        <sql>-->
+<!--            ALTER TABLE `sso_db`.`session`-->
+<!--            ADD CONSTRAINT `fk_session_app_user`-->
+<!--            FOREIGN KEY(`user_id`)-->
+<!--            REFERENCES `sso_db`.`app_user`(`id`)-->
+<!--            ON DELETE NO ACTION-->
+<!--            ON UPDATE NO ACTION;-->
+<!--        </sql>-->
+<!--    </changeSet>-->
+
+
 </databaseChangeLog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
