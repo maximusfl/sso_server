@@ -11,6 +11,11 @@ public class AppUserServise {
     @Autowired
     private AppUserRepository appUserRepository;
 
+    public void save() {
+        appUserRepository.save();
+    }
+
+
 //    @Autowired
 //    PasswordEncoder passwordEncoder;
 

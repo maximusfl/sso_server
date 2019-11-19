@@ -4,6 +4,7 @@ by\artezio\SsoServerInitializer.class
 by\artezio\SsoServerConfiguration.class
 by\artezio\repo\AppUserRepository.class
 by\artezio\entity\ApplicationRole.class
+by\artezio\entity\Session.class
 by\artezio\controller\TestController.class
 by\artezio\config\JpaConfig.class
 by\artezio\servise\AppUserServise.class

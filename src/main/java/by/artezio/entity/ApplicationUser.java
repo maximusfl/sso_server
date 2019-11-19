@@ -12,8 +12,11 @@ public class ApplicationUser implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "username", nullable = false)
+    private String userName;
 
     @Column(name = "password", nullable = false)
     private String password;
@@ -24,6 +27,9 @@ public class ApplicationUser implements Serializable {
     @ManyToMany
     @JoinColumn
     private Set<ApplicationRole> role;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Session> session;
 
     public ApplicationUser() {
     }
@@ -36,12 +42,12 @@ public class ApplicationUser implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -66,5 +72,21 @@ public class ApplicationUser implements Serializable {
 
     public void setRole(Set<ApplicationRole> role) {
         this.role = role;
+    }
+
+    public Set<Session> getSession() {
+        return session;
+    }
+
+    public void setSession(Set<Session> session) {
+        this.session = session;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
