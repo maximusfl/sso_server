@@ -4,48 +4,54 @@
                    xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-<!--    <changeSet id="1" author="max">-->
-<!--        <sql>-->
-<!--            CREATE TABLE `sso_db`.`app_user`(-->
-<!--            `id` INT NOT NULL AUTO_INCREMENT,-->
-<!--            `name` VARCHAR(70),-->
-<!--            `password` VARCHAR(70) NOT NULL,-->
-<!--            `username` VARCHAR(30) NOT NULL,-->
-<!--            `email` VARCHAR(40),-->
-<!--            PRIMARY KEY (`id`))-->
-<!--        </sql>-->
-<!--    </changeSet>-->
+    <changeSet id="1" author="max">
+        <sql>
+
+            CREATE TABLE `sso_db`.`applications`(
+            `id` INT NOT NULL AUTO_INCREMENT,
+            `application_url` VARCHAR(50),
+            PRIMARY KEY (`id`));
 
 
-<!--    <changeSet id="2" author="max">-->
-<!--        <sql>-->
-<!--            CREATE TABLE `sso_db`.`app`(-->
-<!--            `id` INT NOT NULL AUTO_INCREMENT,-->
-<!--            `app_url` VARCHAR(50),-->
-<!--            PRIMARY KEY (`id`));-->
-<!--        </sql>-->
-<!--    </changeSet>-->
+        </sql>
+    </changeSet>
 
-<!--    <changeSet id="3" author="max">-->
-<!--        <sql>-->
-<!--            CREATE TABLE `sso_db`.`app_role`(-->
-<!--            `app_id` INT NOT NULL,-->
-<!--            `role_id` INT NOT NULL,-->
-<!--            `role_name` VARCHAR(20) NOT NULL,-->
-<!--            `role_description` VARCHAR(150),-->
-<!--            PRIMARY KEY (`app_id`),-->
-<!--            UNIQUE INDEX `role_id_UNIQUE` (`role_id` ASC));-->
-<!--        </sql>-->
-<!--    </changeSet>-->
 
-<!--    <changeSet id="4" author="max">-->
-<!--        <sql>-->
-<!--            CREATE TABLE `sso_db`.`user_role`(-->
-<!--            `user_id` INT NOT NULL,-->
-<!--            `role_id` INT NOT NULL,-->
-<!--            PRIMARY KEY(`user_id`,`role_id`));-->
-<!--        </sql>-->
-<!--    </changeSet>-->
+    <changeSet id="2" author="max">
+
+
+            <sql>
+                CREATE TABLE `sso_db`.`applications_roles`(
+                `id` INT NOT NULL AUTO_INCREMENT,
+                `application_id` INT NOT NULL,
+                `role_name` VARCHAR(20) NOT NULL,
+                `role_description` VARCHAR(150),
+                PRIMARY KEY (`id`));
+            </sql>
+
+
+    </changeSet>
+
+    <changeSet id="3" author="max">
+        <sql>
+        CREATE TABLE `sso_db`.`application_users`(
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `name` VARCHAR(70),
+        `password` VARCHAR(70) NOT NULL,
+        `username` VARCHAR(30) NOT NULL,
+        `email` VARCHAR(40),
+        PRIMARY KEY (`id`))
+    </sql>
+    </changeSet>
+
+    <changeSet id="4" author="max">
+        <sql>
+            CREATE TABLE `sso_db`.`applications_users_applications_roles`(
+            `user_id` INT NOT NULL,
+            `role_id` INT NOT NULL,
+            PRIMARY KEY(`user_id`,`role_id`));
+        </sql>
+    </changeSet>
 
 <!--    <changeSet id="5" author="max">-->
 <!--        <sql>-->
