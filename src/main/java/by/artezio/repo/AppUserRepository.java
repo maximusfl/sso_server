@@ -1,6 +1,5 @@
 package by.artezio.repo;
 
-import by.artezio.entity.AppUser;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -17,11 +16,6 @@ public class AppUserRepository {
     }
 
 
-    public void saveUser(AppUser appUser) {
-        entityManager.persist(appUser);
-    }
 
-    public void getUser(){
-        System.out.println(entityManager.createQuery("from app_user", AppUser.class));
-    }
+
 }

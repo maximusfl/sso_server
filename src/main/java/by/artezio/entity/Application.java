@@ -2,18 +2,23 @@ package by.artezio.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
-@Table(name = "app")
-public class App implements Serializable {
+@Table(name = "applications")
+public class Application implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "app_url")
+    @Column(name = "application_url")
     private String appUrl;
 
-    public App() {
+    @OneToMany( mappedBy = "application")
+    private Set<ApplicationRole> roles;
+
+    public Application() {
     }
 
     public Long getId() {
@@ -30,5 +35,13 @@ public class App implements Serializable {
 
     public void setAppUrl(String appUrl) {
         this.appUrl = appUrl;
+    }
+
+    public Set<ApplicationRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<ApplicationRole> roles) {
+        this.roles = roles;
     }
 }
