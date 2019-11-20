@@ -1,4 +1,4 @@
-package by.artezio.config;
+package by.artezio.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +23,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan("by.artezio")
 @PropertySource("classpath:application.properties")
-public class JpaConfig {
+public class JpaConfiguration {
 
     @Autowired
     private Environment environment;
@@ -40,7 +40,7 @@ public class JpaConfig {
 
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws NamingException{
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws NamingException {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource());
         factoryBean.setPackagesToScan("by.artezio.entity");
@@ -50,12 +50,12 @@ public class JpaConfig {
     }
 
     @Bean
-    public JpaVendorAdapter jpaVendorAdapter(){
+    public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
         return hibernateJpaVendorAdapter;
     }
 
-    private Properties jpaProperties(){
+    private Properties jpaProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
         properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
@@ -67,7 +67,7 @@ public class JpaConfig {
 
     @Bean
     @Autowired
-    public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
+    public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
         JpaTransactionManager txManager = new JpaTransactionManager();
         txManager.setEntityManagerFactory(emf);
         return txManager;

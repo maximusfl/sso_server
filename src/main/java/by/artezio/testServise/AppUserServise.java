@@ -1,6 +1,6 @@
-package by.artezio.servise;
+package by.artezio.testServise;
 
-import by.artezio.repo.AppUserRepository;
+import by.artezio.testRepo.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

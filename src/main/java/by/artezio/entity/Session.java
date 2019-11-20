@@ -9,8 +9,7 @@ import java.util.Date;
 public class Session implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     @Column(name = "creation_time")
     private Date creationTime;
@@ -22,11 +21,11 @@ public class Session implements Serializable {
     public Session() {
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

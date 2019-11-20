@@ -1,4 +1,4 @@
-package by.artezio.repo;
+package by.artezio.testRepo;
 
 import by.artezio.entity.ApplicationRole;
 import by.artezio.entity.ApplicationUser;
@@ -19,8 +19,7 @@ public class AppUserRepository {
         return this.entityManager;
     }
 
-
-    public void save() {
+    public static ApplicationUser getTestUser(){
         ApplicationRole role = new ApplicationRole();
         role.setRoleNmae("admin");
         Set<ApplicationRole> roles = new HashSet<>();
@@ -30,8 +29,13 @@ public class AppUserRepository {
         applicationUser.setUserName("sss");
         applicationUser.setPassword("tgfft");
         applicationUser.setRole(roles);
+        return applicationUser;
+    }
 
-        entityManager.persist(applicationUser);
+    public void save() {
+
+
+        entityManager.persist(getTestUser());
 
 
     }
