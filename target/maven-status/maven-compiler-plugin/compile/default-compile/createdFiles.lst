@@ -1,9 +1,0 @@
-by\artezio\entity\ApplicationUser.class
-by\artezio\entity\Application.class
-by\artezio\dao\ApplicationUserDAO.class
-by\artezio\entity\ApplicationRole.class
-by\artezio\service\ApplicationUserService.class
-by\artezio\testController\TestController.class
-by\artezio\configuration\JpaConfiguration.class
-by\artezio\configuration\SsoServerInitializer.class
-by\artezio\entity\Session.class
