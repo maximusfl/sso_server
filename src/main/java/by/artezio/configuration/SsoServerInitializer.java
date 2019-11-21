@@ -15,7 +15,7 @@ public class SsoServerInitializer implements ServletContainerInitializer {
         AnnotationConfigWebApplicationContext context =
                 new AnnotationConfigWebApplicationContext();
 
-        context.register(SsoServerConfiguration.class);
+        context.register(JpaConfiguration.class);
 
         DispatcherServlet servlet = new DispatcherServlet(context);
 
