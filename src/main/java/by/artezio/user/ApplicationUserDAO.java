@@ -1,4 +1,4 @@
-package by.artezio.dao;
+package by.artezio.user;
 
 
 import by.artezio.entity.ApplicationUser;

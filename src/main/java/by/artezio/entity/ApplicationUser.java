@@ -16,7 +16,7 @@ public class ApplicationUser implements Serializable {
     private String name;
 
     @Column(name = "username", nullable = false)
-    private String userName;
+    private String login;
 
     @Column(name = "password", nullable = false)
     private String password;
@@ -31,7 +31,20 @@ public class ApplicationUser implements Serializable {
     @OneToMany(mappedBy = "user")
     private Set<Session> session;
 
-    public ApplicationUser() {
+    public ApplicationUser() { }
+
+    public ApplicationUser(String name,
+                           String login,
+                           String password,
+                           String email,
+                           Set<ApplicationRole> role,
+                           Set<Session> session) {
+        this.name = name;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+        this.session = session;
     }
 
     public Long getId() {
@@ -42,12 +55,12 @@ public class ApplicationUser implements Serializable {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getLogin() {
+        return login;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {

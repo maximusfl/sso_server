@@ -26,7 +26,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan("by.artezio")
 @PropertySource("classpath:application.properties")
-@EnableJpaRepositories(basePackages = "by.artezio.dao")
+@EnableJpaRepositories(basePackages = "by.artezio")
 @Configuration
 @EnableWebMvc
 public class JpaConfiguration {

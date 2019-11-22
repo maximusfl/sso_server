@@ -1,6 +1,5 @@
-package by.artezio.service;
+package by.artezio.user;
 
-import by.artezio.dao.ApplicationUserDAO;
 import by.artezio.entity.ApplicationUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +16,26 @@ public class ApplicationUserService {
 
     public List<ApplicationUser> findAll() {
         return dao.findAll();
+    }
+
+    public void deleteAll() {
+        dao.deleteAll();
+    }
+
+    public void addUser(ApplicationUser user) {
+        dao.save(user);
+    }
+
+    public ApplicationUser findUserById(Long id) {
+        return dao.findOne(id);
+    }
+
+    public void deleteById(Long id){
+        dao.delete(id);
+    }
+
+    public Long getCountUsers(){
+        return dao.count();
     }
 
 }
