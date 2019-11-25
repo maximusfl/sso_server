@@ -8,6 +8,13 @@ import java.util.Set;
 @Table(name = "applications_roles")
 public class ApplicationRole implements Serializable {
 
+    public ApplicationRole(Application application, String roleNmae, String roleDescription, Set<ApplicationUser> user) {
+        this.application = application;
+        this.roleNmae = roleNmae;
+        this.roleDescription = roleDescription;
+        this.user = user;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

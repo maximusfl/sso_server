@@ -18,6 +18,11 @@ public class Application implements Serializable {
     @OneToMany( mappedBy = "application")
     private Set<ApplicationRole> roles;
 
+    public Application(String appUrl, Set<ApplicationRole> roles) {
+        this.appUrl = appUrl;
+        this.roles = roles;
+    }
+
     public Application() {
     }
 

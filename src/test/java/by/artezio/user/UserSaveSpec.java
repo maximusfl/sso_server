@@ -26,7 +26,7 @@ import static org.junit.Assert.*;
 @WebAppConfiguration
 @ContextConfiguration(loader = AnnotationConfigWebContextLoader.class,
         classes = {JpaConfiguration.class})
-public class TestUserServiceSave implements TestSampleData {
+public class UserSaveSpec implements TestSampleData {
 
     @Autowired
     private ApplicationUserService userService;
@@ -44,14 +44,14 @@ public class TestUserServiceSave implements TestSampleData {
     @Test
     public void saveUserWithMock() {
         ApplicationUserDAO localMockRepository = Mockito.mock(ApplicationUserDAO.class);
-        ApplicationUser testUser = user;
+        ApplicationUser testUser = TestSampleData.testUser;
         localMockRepository.save(testUser);
         Mockito.verify(localMockRepository).save(testUser);
     }
 
     @Test
     public void addTestUser() {
-        userService.addUser(user);
+        userService.addUser(testUser);
         assertNotNull(userService.findAll());
 
 

@@ -18,6 +18,12 @@ public class Session implements Serializable {
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private ApplicationUser user;
 
+    public Session(String id, Date creationTime, ApplicationUser user) {
+        this.id = id;
+        this.creationTime = creationTime;
+        this.user = user;
+    }
+
     public Session() {
     }
 
