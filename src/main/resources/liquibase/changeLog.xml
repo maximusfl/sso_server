@@ -19,7 +19,7 @@
         <sql>
             CREATE TABLE `sso_db`.`applications_roles`(
             `id` INT NOT NULL AUTO_INCREMENT,
-            `application_id` INT NOT NULL,
+            `application_id` INT,
             `role_name` VARCHAR(20) NOT NULL,
             `role_description` VARCHAR(150),
             PRIMARY KEY (`id`));
