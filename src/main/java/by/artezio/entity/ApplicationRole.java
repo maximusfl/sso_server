@@ -21,7 +21,7 @@ public class ApplicationRole implements Serializable {
 
 
     @ManyToOne
-    @JoinColumn(name = "application_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "application_id", referencedColumnName = "id", nullable = true)
     private Application application;
 
     @Column(name = "role_name", nullable = false)

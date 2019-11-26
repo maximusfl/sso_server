@@ -33,7 +33,7 @@
             `id` INT NOT NULL AUTO_INCREMENT,
             `name` VARCHAR(70),
             `password` VARCHAR(70) NOT NULL,
-            `username` VARCHAR(30) NOT NULL,
+            `login` VARCHAR(30) NOT NULL,
             `email` VARCHAR(40),
             PRIMARY KEY (`id`))
         </sql>
