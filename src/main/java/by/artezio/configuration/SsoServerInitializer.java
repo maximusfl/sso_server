@@ -2,6 +2,7 @@ package by.artezio.configuration;
 
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 
 import javax.servlet.ServletContainerInitializer;
 import javax.servlet.ServletContext;
@@ -25,4 +26,6 @@ public class SsoServerInitializer implements ServletContainerInitializer {
         registration.addMapping("/");
         registration.setLoadOnStartup(1);
     }
+
+
 }

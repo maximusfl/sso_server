@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -32,4 +33,6 @@ public class ApplicationRoleService  {
     public List<ApplicationRole> getAllRoles(){
         return roleDAO.findAll();
     }
+
+    public Set<ApplicationRole> getRolesByApplication(Long id){return roleDAO.getApplicationRolesByApplicationID(id);}
 }

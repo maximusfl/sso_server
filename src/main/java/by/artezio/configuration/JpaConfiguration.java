@@ -14,7 +14,11 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.naming.NamingException;
@@ -29,10 +33,20 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = "by.artezio")
 @Configuration
 @EnableWebMvc
-public class JpaConfiguration {
+public class JpaConfiguration  extends WebMvcConfigurationSupport {
 
     @Autowired
     private Environment environment;
+
+    @Bean
+    public RequestMappingHandlerMapping
+    requestMappingHandlerMapping() {
+
+        RequestMappingHandlerMapping handlerMapping
+                = super.requestMappingHandlerMapping();
+        handlerMapping.setUseSuffixPatternMatch(false);
+        return handlerMapping;
+    }
 
     @Bean
     InternalResourceViewResolver internalResourceViewResolver(){
@@ -88,4 +102,7 @@ public class JpaConfiguration {
         txManager.setEntityManagerFactory(emf);
         return txManager;
     }
+
+
+
 }
