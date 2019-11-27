@@ -1,5 +1,6 @@
 package by.artezio.role;
 
+import by.artezio.application.ApplicationService;
 import by.artezio.entity.Application;
 import by.artezio.entity.ApplicationRole;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,28 @@ public class AddRoleController {
     private static Logger log = Logger.getLogger("AddRoleController");
     @Autowired
     ApplicationRoleService roleService;
+    @Autowired
+    ApplicationService applicationService;
 
     @GetMapping("/{appUrl}")
-    public String showAddRolePage(@PathVariable String appUrl, Model model){
-log.info("url: "+appUrl);
-
-model.addAttribute(appUrl);
+    public String showAddRolePage(@PathVariable String appUrl, Model model) {
+        log.info("url: " + appUrl);
+        model.addAttribute(appUrl);
         return "addRolePage";
+    }
+
+    @PostMapping("/{appUrl}")
+    public String saveNewRole(
+            @PathVariable String appUrl,
+            @RequestParam(value = "rolename") String rolename,
+            @RequestParam(value = "roledescription") String roledescription){
+        Application application = applicationService.findApplicationByUrl(appUrl);
+        log.info("url: " + appUrl);
+        ApplicationRole newRole = new ApplicationRole();
+        newRole.setApplication(application);
+        newRole.setRoleNmae(rolename);
+        newRole.setRoleDescription(roledescription);
+        roleService.addRole(newRole);
+        return "main";
     }
 }

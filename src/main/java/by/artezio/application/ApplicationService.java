@@ -32,5 +32,9 @@ public class ApplicationService {
         return applicationDAO.findAll();
     }
 
+    public Application findApplicationByUrl(String url){
+        return applicationDAO.findByUrl(url);
+    }
+
 
 }

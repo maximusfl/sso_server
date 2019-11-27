@@ -7,6 +7,22 @@
         <h1 class="display-4">${appUrl} </h1>
     </div>
 </div>
+<h1>${appUrl}</h1>
+
+<form action="${pageContext.request.contextPath}/addrole/${appUrl}" method="POST">
+
+
+
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Enter new role for ${appUrl}</label>
+        <textarea class="form-control" name="rolename" id="exampleFormControlTextarea1" rows="1"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea2">Add description</label>
+        <textarea class="form-control" name="roledescription" id="exampleFormControlTextarea2" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">save</button>
+</form>
 
 
 <jsp:include page="footer.jsp"></jsp:include>
