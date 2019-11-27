@@ -36,5 +36,12 @@ public class ApplicationService {
         return applicationDAO.findByUrl(url);
     }
 
+    public Boolean isApplicationUrlExist(String url){
+        if(applicationDAO.findByUrl(url) == null){
+            return false;
+        }
+        else return true;
+    }
+
 
 }

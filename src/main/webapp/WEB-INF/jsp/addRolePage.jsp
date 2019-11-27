@@ -7,7 +7,6 @@
         <h1 class="display-4">${appUrl} </h1>
     </div>
 </div>
-<h1>${appUrl}</h1>
 
 <form action="${pageContext.request.contextPath}/addrole/${appUrl}" method="POST">
 

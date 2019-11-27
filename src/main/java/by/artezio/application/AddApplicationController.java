@@ -33,7 +33,15 @@ public class AddApplicationController {
     }
 
     @PostMapping("/app")
-    public ModelAndView addNewApp(@RequestParam (value = "appurl") String appUrl, ModelMap model){
+    public ModelAndView addNewApp(@RequestParam (value = "appurl") String appUrl,
+                                  ModelMap model){
+
+        if(applicationService.isApplicationUrlExist(appUrl)){
+            log.info("appUrl: "+appUrl);
+            model.addAttribute("appUrl", appUrl);
+                return new ModelAndView("redirect:/error/{appUrl}", model);
+
+        }
 
         Application application = new Application();
         application.setAppUrl(appUrl);

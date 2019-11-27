@@ -8,4 +8,6 @@ public interface ApplicationDAO extends JpaRepository<Application, Long> {
 
     @Query("from Application where appUrl = ?1")
      Application findByUrl(String url);
+
+
 }
