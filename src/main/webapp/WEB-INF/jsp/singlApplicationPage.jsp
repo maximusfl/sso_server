@@ -26,7 +26,7 @@
     <c:forEach var="role" items="${roles}">
         <tr>
             <th scope="row">${role.id}</th>
-            <td>${role.roleNmae}</td>
+            <td><a href="${pageContext.request.contextPath}/roles/${role.id}">${role.roleNmae}</a></td>
             <td>${role.roleDescription}</td>
         </tr>
     </c:forEach>

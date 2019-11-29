@@ -12,7 +12,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon3">http://</span>
         </div>
-        <input type="text" name="appurl" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+        <input type="text" name="appurl" class="form-control" id="basic-url" aria-describedby="basic-addon3" required>
     </div>
     <button type="submit" class="btn btn-primary">Registration</button>
 </form>

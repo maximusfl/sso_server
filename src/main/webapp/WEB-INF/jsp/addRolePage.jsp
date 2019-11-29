@@ -14,11 +14,11 @@
 
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Enter new role for ${appUrl}</label>
-        <textarea class="form-control" name="rolename" id="exampleFormControlTextarea1" rows="1"></textarea>
+        <textarea class="form-control" name="rolename" id="exampleFormControlTextarea1" rows="1" required></textarea>
     </div>
     <div class="form-group">
         <label for="exampleFormControlTextarea2">Add description</label>
-        <textarea class="form-control" name="roledescription" id="exampleFormControlTextarea2" rows="3"></textarea>
+        <textarea class="form-control" name="roledescription" id="exampleFormControlTextarea2" rows="3" required></textarea>
     </div>
     <button type="submit" class="btn btn-primary">save</button>
 </form>

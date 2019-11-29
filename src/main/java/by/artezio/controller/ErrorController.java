@@ -14,7 +14,6 @@ public class ErrorController {
     public String showUrlExistsError(@PathVariable String appUrl, Model model){
         model.addAttribute("message" ,appUrl+" has registred already");
         return "error";
-
     }
 
 }

@@ -75,4 +75,14 @@ public class ApplicationRole implements Serializable {
     public void setUser(Set<ApplicationUser> user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "ApplicationRole{" +
+                "id=" + id +
+                ", application=" + application +
+                ", roleNmae='" + roleNmae + '\'' +
+                ", roleDescription='" + roleDescription + '\'' +
+                '}';
+    }
 }

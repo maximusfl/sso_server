@@ -6,7 +6,9 @@ import by.artezio.entity.ApplicationRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Set;
 import java.util.logging.Logger;
@@ -28,7 +30,8 @@ public class AddRoleController {
     }
 
     @PostMapping("/{appUrl}")
-    public String saveNewRole(
+    public ModelAndView saveNewRole(
+            ModelMap model,
             @PathVariable String appUrl,
             @RequestParam(value = "rolename") String rolename,
             @RequestParam(value = "roledescription") String roledescription){
@@ -39,6 +42,10 @@ public class AddRoleController {
         newRole.setRoleNmae(rolename);
         newRole.setRoleDescription(roledescription);
         roleService.addRole(newRole);
-        return "main";
+
+        Long id = application.getId();
+        model.addAttribute("id",id);
+        return new ModelAndView("redirect:/apps/{id}");
     }
+
 }
