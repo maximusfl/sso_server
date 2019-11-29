@@ -12,7 +12,7 @@
 </div>
 
 
-<form action="${pageContext.request.contextPath}/roles/${id}" method="PUT">
+<form action="${pageContext.request.contextPath}/roles/update/${role.id}" method="POST">
 
 
 
@@ -24,12 +24,16 @@
 
         <input textarea class="form-control" name="roledescription" value="${role.roleDescription}" id="exampleFormControlTextarea2" rows="3" required></textarea>
     </div>
+
     <button type="submit" class="btn btn-primary">save</button>
 
 
-
-
 </form>
+<p>
+<form action="${pageContext.request.contextPath}/roles/delete/${role.id}" method="POST">
+     <button type="submit" class="btn btn-danger">remove</button>
+</form>
+</p>
 
 
 <jsp:include page="footer.jsp"/>
