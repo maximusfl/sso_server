@@ -12,18 +12,25 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.naming.NamingException;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.Collections;
 import java.util.Properties;
 
 
@@ -33,7 +40,14 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = "by.artezio")
 @Configuration
 @EnableWebMvc
-public class JpaConfiguration  extends WebMvcConfigurationSupport {
+public class JpaConfiguration extends WebMvcConfigurationSupport {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**");
+    }
+
+
 
     @Autowired
     private Environment environment;
@@ -48,8 +62,11 @@ public class JpaConfiguration  extends WebMvcConfigurationSupport {
         return handlerMapping;
     }
 
+
+
+
     @Bean
-    InternalResourceViewResolver internalResourceViewResolver(){
+    InternalResourceViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver resolver =
                 new InternalResourceViewResolver();
 
@@ -103,6 +120,15 @@ public class JpaConfiguration  extends WebMvcConfigurationSupport {
         return txManager;
     }
 
+    @Bean
+    BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(12);
+    }
 
+    public static void main(String[] args) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+        System.out.println("password->" +
+                encoder.encode("password"));
 
+    }
 }

@@ -1,3 +1,4 @@
+<%--<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>--%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -26,6 +27,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/apps">show applications</a>
             </li>
+
+<%--            <sec:authorize access="isAuthenticated()">--%>
+<%--                <li class="nav-item">--%>
+<%--                    <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>--%>
+<%--                </li>--%>
+<%--            </sec:authorize>--%>
 
 
 
