@@ -10,6 +10,8 @@
             CREATE TABLE `sso_db`.`applications`(
             `id` INT NOT NULL AUTO_INCREMENT,
             `application_url` VARCHAR(50),
+            `application_name` VARCHAR(50),
+            `application_description` VARCHAR(500),
             PRIMARY KEY (`id`));
         </sql>
     </changeSet>
