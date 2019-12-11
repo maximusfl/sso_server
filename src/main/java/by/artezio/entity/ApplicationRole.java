@@ -1,11 +1,14 @@
 package by.artezio.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "applications_roles")
+@JsonIgnoreProperties(value= {"user"})
 public class ApplicationRole implements Serializable {
 
     public ApplicationRole(Application application, String roleNmae, String roleDescription, Set<ApplicationUser> user) {
@@ -30,7 +33,7 @@ public class ApplicationRole implements Serializable {
     @Column(name = "role_description")
     private String roleDescription;
 
-    @ManyToMany(mappedBy = "role")
+    @ManyToMany(mappedBy = "role", fetch = FetchType.LAZY)
     private Set<ApplicationUser> user;
 
     public ApplicationRole() {

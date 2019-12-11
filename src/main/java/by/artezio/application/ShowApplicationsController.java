@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Set;
+import java.util.List;
 
 @Controller
 @RequestMapping("/apps")
@@ -32,7 +32,7 @@ public class ShowApplicationsController {
     public String showApp(@PathVariable Long id, Model model){
         Application application = applicationService.findApplicationById(id);
         model.addAttribute("app", application);
-        Set<ApplicationRole> roles = roleService.getRolesByApplication(id);
+        List<ApplicationRole> roles = roleService.getRolesByApplication(id);
         model.addAttribute("roles",roles);
         return "singlApplicationPage";
     }

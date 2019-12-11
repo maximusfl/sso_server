@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Set;
 
 @Service
 @Transactional
@@ -34,7 +33,7 @@ public class ApplicationRoleService  {
         return roleDAO.findAll();
     }
 
-    public Set<ApplicationRole> getRolesByApplication(Long id){return roleDAO.getApplicationRolesByApplicationID(id);}
+    public List<ApplicationRole> getRolesByApplication(Long id){return roleDAO.getApplicationRolesByApplicationID(id);}
 
 
     public void update(ApplicationRole role, Long id) {
