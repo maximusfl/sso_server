@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "applications")
-@JsonIgnoreProperties(value= {"roles"})
+@JsonIgnoreProperties(value = {"roles"})
 public class Application implements Serializable {
 
     @Id
@@ -24,9 +24,9 @@ public class Application implements Serializable {
     @Column(name = "application_description")
     private String description;
 
-    @OneToMany( mappedBy = "application", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "application", fetch = FetchType.LAZY)
     @Column(nullable = true)
-        private Set<ApplicationRole> roles;
+    private Set<ApplicationRole> roles;
 
     public Application(String applicationUrl, String applicationName, String description, Set<ApplicationRole> roles) {
         this.applicationUrl = applicationUrl;

@@ -40,6 +40,7 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = "by.artezio")
 @Configuration
 @EnableWebMvc
+
 public class JpaConfiguration extends WebMvcConfigurationSupport {
 
     @Override

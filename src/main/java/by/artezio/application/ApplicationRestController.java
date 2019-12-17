@@ -26,7 +26,7 @@ public class ApplicationRestController {
     }
 
     @PostMapping
-    public void saveNewApp(@RequestBody Application application) {
+    public void saveNewApplication(@RequestBody Application application) {
 
         log.info("applicationUrl: " + application.getApplicationUrl() +
                 " appName: " + application.getApplicationName() +
