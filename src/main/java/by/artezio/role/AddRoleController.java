@@ -10,7 +10,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Set;
 import java.util.logging.Logger;
 
 @Controller
@@ -39,7 +38,7 @@ public class AddRoleController {
         log.info("url: " + appUrl);
         ApplicationRole newRole = new ApplicationRole();
         newRole.setApplication(application);
-        newRole.setRoleNmae(rolename);
+        newRole.setRoleName(rolename);
         newRole.setRoleDescription(roledescription);
         roleService.addRole(newRole);
 

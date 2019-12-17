@@ -28,8 +28,8 @@ public class ApplicationRestController {
     @PostMapping
     public void saveNewApp(@RequestBody Application application) {
 
-        log.info("applicationUrl: " + application.getAppUrl() +
-                " appName: " + application.getAppName() +
+        log.info("applicationUrl: " + application.getApplicationUrl() +
+                " appName: " + application.getApplicationName() +
                 " description: " + application.getDescription());
         applicationService.addApplication(application);
     }

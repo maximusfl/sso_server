@@ -36,7 +36,7 @@ public class EditRolecontroller {
 
         ApplicationRole loadedRole = roleService.findRoleById(id);
         log.info("loadedRole_id: "+ id);
-        loadedRole.setRoleNmae(rolename);
+        loadedRole.setRoleName(rolename);
         loadedRole.setRoleDescription(roleDescription);
         loadedRole.setId(id);
         roleService.update(loadedRole,id);

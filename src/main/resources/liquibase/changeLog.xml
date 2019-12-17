@@ -54,7 +54,7 @@
 
     <changeSet id="5" author="max">
         <sql>
-            CREATE TABLE `sso_db`.`session` (
+            CREATE TABLE `sso_db`.`sessions` (
             `id` VARCHAR(70) NOT NULL,
             `user_id` INT NOT NULL,
             `creation_time` DATETIME NOT NULL,
@@ -95,7 +95,7 @@
 
     <changeSet id="8" author="max">
         <sql>
-            ALTER TABLE `sso_db`.`session`
+            ALTER TABLE `sso_db`.`sessions`
             ADD CONSTRAINT `fk_session_app_user`
             FOREIGN KEY(`user_id`)
             REFERENCES `sso_db`.`application_users`(`id`)

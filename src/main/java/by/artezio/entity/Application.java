@@ -1,7 +1,6 @@
 package by.artezio.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.istack.Nullable;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,10 +16,10 @@ public class Application implements Serializable {
     private Long id;
 
     @Column(name = "application_url")
-    private String appUrl;
+    private String applicationUrl;
 
     @Column(name = "application_name")
-    private String appName;
+    private String applicationName;
 
     @Column(name = "application_description")
     private String description;
@@ -29,9 +28,9 @@ public class Application implements Serializable {
     @Column(nullable = true)
         private Set<ApplicationRole> roles;
 
-    public Application(String appUrl, String appName, String description,  Set<ApplicationRole> roles) {
-        this.appUrl = appUrl;
-        this.appName = appName;
+    public Application(String applicationUrl, String applicationName, String description, Set<ApplicationRole> roles) {
+        this.applicationUrl = applicationUrl;
+        this.applicationName = applicationName;
         this.description = description;
         this.roles = roles;
     }
@@ -43,20 +42,20 @@ public class Application implements Serializable {
         return id;
     }
 
-    public String getAppUrl() {
-        return appUrl;
+    public String getApplicationUrl() {
+        return applicationUrl;
     }
 
-    public void setAppUrl(String appUrl) {
-        this.appUrl = appUrl;
+    public void setApplicationUrl(String appUrl) {
+        this.applicationUrl = appUrl;
     }
 
-    public String getAppName() {
-        return appName;
+    public String getApplicationName() {
+        return applicationName;
     }
 
-    public void setAppName(String appName) {
-        this.appName = appName;
+    public void setApplicationName(String appName) {
+        this.applicationName = appName;
     }
 
     public String getDescription() {

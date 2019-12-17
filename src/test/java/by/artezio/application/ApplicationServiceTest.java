@@ -50,7 +50,7 @@
 //    public void findApplicationById() {
 //        Mockito.when(localApplicationService.findApplicationById(1L)).thenReturn(testApplication);
 //        Application application = localApplicationService.findApplicationById(1L);
-//        assertEquals("testapp.com", application.getAppUrl());
+//        assertEquals("testapp.com", application.getApplicationUrl());
 //    }
 //
 //    @Test

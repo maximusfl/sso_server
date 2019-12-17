@@ -11,9 +11,9 @@ import java.util.Set;
 @JsonIgnoreProperties(value= {"user"})
 public class ApplicationRole implements Serializable {
 
-    public ApplicationRole(Application application, String roleNmae, String roleDescription, Set<ApplicationUser> user) {
+    public ApplicationRole(Application application, String roleName, String roleDescription, Set<ApplicationUser> user) {
         this.application = application;
-        this.roleNmae = roleNmae;
+        this.roleName = roleName;
         this.roleDescription = roleDescription;
         this.user = user;
     }
@@ -28,7 +28,7 @@ public class ApplicationRole implements Serializable {
     private Application application;
 
     @Column(name = "role_name", nullable = false)
-    private String roleNmae;
+    private String roleName;
 
     @Column(name = "role_description")
     private String roleDescription;
@@ -55,12 +55,12 @@ public class ApplicationRole implements Serializable {
         this.application = application;
     }
 
-    public String getRoleNmae() {
-        return roleNmae;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setRoleNmae(String roleNmae) {
-        this.roleNmae = roleNmae;
+    public void setRoleName(String roleNmae) {
+        this.roleName = roleNmae;
     }
 
     public String getRoleDescription() {
@@ -84,7 +84,7 @@ public class ApplicationRole implements Serializable {
         return "ApplicationRole{" +
                 "id=" + id +
                 ", application=" + application +
-                ", roleNmae='" + roleNmae + '\'' +
+                ", roleNmae='" + roleName + '\'' +
                 ", roleDescription='" + roleDescription + '\'' +
                 '}';
     }
