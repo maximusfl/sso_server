@@ -17,6 +17,7 @@ public class ApplicationRestController {
 
     @GetMapping
     public List<Application> getAllApplications(){
+        log.info("called getAllApplications");
         return applicationService.getAllApplications();
     }
 

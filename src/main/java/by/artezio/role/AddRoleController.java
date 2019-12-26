@@ -32,14 +32,14 @@ public class AddRoleController {
     public ModelAndView saveNewRole(
             ModelMap model,
             @PathVariable String appUrl,
-            @RequestParam(value = "rolename") String rolename,
-            @RequestParam(value = "roledescription") String roledescription){
+            @RequestParam(value = "roleName") String roleName,
+            @RequestParam(value = "roleDescription") String roleDescription){
         Application application = applicationService.findApplicationByUrl(appUrl);
         log.info("url: " + appUrl);
         ApplicationRole newRole = new ApplicationRole();
         newRole.setApplication(application);
-        newRole.setRoleName(rolename);
-        newRole.setRoleDescription(roledescription);
+        newRole.setRoleName(roleName);
+        newRole.setRoleDescription(roleDescription);
         roleService.addRole(newRole);
 
         Long id = application.getId();

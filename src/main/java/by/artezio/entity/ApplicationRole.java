@@ -84,7 +84,7 @@ public class ApplicationRole implements Serializable {
         return "ApplicationRole{" +
                 "id=" + id +
                 ", application=" + application +
-                ", roleNmae='" + roleName + '\'' +
+                ", roleName='" + roleName + '\'' +
                 ", roleDescription='" + roleDescription + '\'' +
                 '}';
     }

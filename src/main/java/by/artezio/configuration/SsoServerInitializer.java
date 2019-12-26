@@ -15,20 +15,11 @@ public class SsoServerInitializer implements ServletContainerInitializer {
     public void onStartup(Set<Class<?>> set, ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext context =
                 new AnnotationConfigWebApplicationContext();
-
         context.register(JpaConfiguration.class);
-
         DispatcherServlet servlet = new DispatcherServlet(context);
-
         ServletRegistration.Dynamic registration =
                 servletContext.addServlet("dispatcher", servlet);
-
         registration.addMapping("/");
         registration.setLoadOnStartup(1);
     }
-
-
-
-
-
 }

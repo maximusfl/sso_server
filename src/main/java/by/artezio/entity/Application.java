@@ -38,6 +38,10 @@ public class Application implements Serializable {
     public Application() {
     }
 
+    public void setId(Long id){
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }

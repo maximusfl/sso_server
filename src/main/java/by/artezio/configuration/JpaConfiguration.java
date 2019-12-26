@@ -33,22 +33,19 @@ import javax.sql.DataSource;
 import java.util.Collections;
 import java.util.Properties;
 
-
 @EnableTransactionManagement
 @ComponentScan("by.artezio")
 @PropertySource("classpath:application.properties")
 @EnableJpaRepositories(basePackages = "by.artezio")
 @Configuration
 @EnableWebMvc
-
 public class JpaConfiguration extends WebMvcConfigurationSupport {
-
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**");
+        registry.addMapping("/**")
+                .allowedOrigins("*")
+                .allowedMethods("GET", "OPTIONS", "PUT", "POST", "DELETE");
     }
-
-
 
     @Autowired
     private Environment environment;
@@ -56,21 +53,16 @@ public class JpaConfiguration extends WebMvcConfigurationSupport {
     @Bean
     public RequestMappingHandlerMapping
     requestMappingHandlerMapping() {
-
         RequestMappingHandlerMapping handlerMapping
                 = super.requestMappingHandlerMapping();
         handlerMapping.setUseSuffixPatternMatch(false);
         return handlerMapping;
     }
 
-
-
-
     @Bean
     InternalResourceViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver resolver =
                 new InternalResourceViewResolver();
-
         resolver.setPrefix("/WEB-INF/jsp/");
         resolver.setSuffix(".jsp");
         return resolver;
@@ -85,7 +77,6 @@ public class JpaConfiguration extends WebMvcConfigurationSupport {
         dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
         return dataSource;
     }
-
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws NamingException {
@@ -109,7 +100,6 @@ public class JpaConfiguration extends WebMvcConfigurationSupport {
         properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
-
         return properties;
     }
 
@@ -130,6 +120,5 @@ public class JpaConfiguration extends WebMvcConfigurationSupport {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
         System.out.println("password->" +
                 encoder.encode("password"));
-
     }
 }
