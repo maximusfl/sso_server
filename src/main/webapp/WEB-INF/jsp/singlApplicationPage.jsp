@@ -2,8 +2,6 @@
 <jsp:include page="header.jsp"/>
 
 
-
-
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4">${app.appUrl} </h1>
@@ -11,13 +9,15 @@
 </div>
 
 <p>
-    <a class="btn btn-primary" href="${pageContext.request.contextPath}/addrole/${app.appUrl}" role="button" >set new role</a>
+    <a class="btn btn-primary" href="${pageContext.request.contextPath}/addrole/${app.appUrl}" role="button">set new
+        role</a>
 </p>
 
 
 <table class="table">
     <thead class="thead-light">
-    <tr><th scope="col">S/N</th>
+    <tr>
+        <th scope="col">S/N</th>
         <th scope="col">Role</th>
         <th scope="col">Description</th>
     </tr>

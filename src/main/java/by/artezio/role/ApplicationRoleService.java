@@ -9,35 +9,34 @@ import java.util.List;
 
 @Service
 @Transactional
-public class ApplicationRoleService  {
-    @Autowired
-    ApplicationRoleDAO roleDAO;
+public class ApplicationRoleService {
+  @Autowired ApplicationRoleDAO roleDAO;
 
-    public void addRole(ApplicationRole role){
-        roleDAO.save(role);
-    }
+  public void addRole(ApplicationRole role) {
+    roleDAO.save(role);
+  }
 
-    public ApplicationRole findRoleById(Long id){
-        return roleDAO.findOne(id);
-    }
+  public ApplicationRole findRoleById(Long id) {
+    return roleDAO.findOne(id);
+  }
 
-    public void deleteRoleById(Long id){
-        roleDAO.delete(id);
-    }
+  public void deleteRoleById(Long id) {
+    roleDAO.delete(id);
+  }
 
-    public void deleteAllRoles(){
-        roleDAO.deleteAll();
-    }
+  public void deleteAllRoles() {
+    roleDAO.deleteAll();
+  }
 
-    public List<ApplicationRole> getAllRoles(){
-        return roleDAO.findAll();
-    }
+  public List<ApplicationRole> getAllRoles() {
+    return roleDAO.findAll();
+  }
 
-    public List<ApplicationRole> getRolesByApplication(Long id){return roleDAO.getApplicationRolesByApplicationID(id);}
+  public List<ApplicationRole> getRolesByApplication(Long id) {
+    return roleDAO.getApplicationRolesByApplicationID(id);
+  }
 
-
-    public void update(ApplicationRole role, Long id) {
-        roleDAO.delete(id);
-        roleDAO.save(role);
-    }
+  public void update(ApplicationRole role) {
+    roleDAO.save(role);
+  }
 }

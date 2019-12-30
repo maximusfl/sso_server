@@ -1,10 +1,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 
 
-
-
 <form action="${pageContext.request.contextPath}/add/app" method="POST">
-
 
 
     <label for="basic-url">Enter url for tegistration a new application</label>

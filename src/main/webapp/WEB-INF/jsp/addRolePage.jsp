@@ -11,8 +11,7 @@
 <form action="${pageContext.request.contextPath}/addrole/${appUrl}" method="POST">
 
 
-
-    <div class="form-group">
+<div class="form-group">
         <label for="exampleFormControlTextarea1">Enter new role for ${appUrl}</label>
         <textarea class="form-control" name="rolename" id="exampleFormControlTextarea1" rows="1" required></textarea>
     </div>
