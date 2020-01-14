@@ -13,7 +13,7 @@ public class ErrorController {
     @GetMapping("/{appUrl}")
     public String showUrlExistsError(@PathVariable String appUrl, Model model){
         model.addAttribute("message" ,appUrl+" has registred already");
-        return "error";
+        return "registration";
     }
 
 }

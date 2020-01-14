@@ -161,6 +161,12 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${org.hibernate.version}</version>
         </dependency>
+
+        <dependency><!-- needed for freemarker FreeMarkerConfigurer stuff -->
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
         <!-- Test -->
         <dependency>
             <groupId>junit</groupId>
@@ -168,6 +174,8 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
+
         <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
         <dependency>
             <groupId>org.mockito</groupId>
@@ -191,7 +199,23 @@
             <version>2.9.2</version>
             <scope>runtime</scope>
         </dependency>
-        <!--        javaScript-->
+
+        <!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.28</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.10</version>
+        </dependency>
+
+
     </dependencies>
     <build>
         <plugins>

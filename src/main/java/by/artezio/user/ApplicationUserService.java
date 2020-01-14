@@ -38,4 +38,11 @@ public class ApplicationUserService {
         return dao.count();
     }
 
+    public static void main(String[] args) {
+
+    }
+
+
 }
+
+

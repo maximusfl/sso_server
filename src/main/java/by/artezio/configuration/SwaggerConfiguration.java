@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -33,4 +35,24 @@ public class SwaggerConfiguration extends WebMvcConfigurerAdapter {
         .addResourceHandler("/webjars/**")
         .addResourceLocations("classpath:/META-INF/resources/webjars/");
   }
+
+  @Bean
+  public FreeMarkerViewResolver freemarkerViewResolver() {
+    FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
+    resolver.setCache(true);
+    resolver.setPrefix("");
+    resolver.setSuffix(".ftl");
+    resolver.setRequestContextAttribute("contextPath");
+    return resolver;
+  }
+
+
+  @Bean
+  public FreeMarkerConfigurer freemarkerConfig() {
+    FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
+    freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/ftl/");
+    return freeMarkerConfigurer;
+  }
+
+
 }

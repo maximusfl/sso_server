@@ -57,13 +57,13 @@ public class JpaConfiguration extends WebMvcConfigurationSupport {
     return handlerMapping;
   }
 
-  @Bean
-  InternalResourceViewResolver internalResourceViewResolver() {
-    InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-    resolver.setPrefix("/WEB-INF/jsp/");
-    resolver.setSuffix(".jsp");
-    return resolver;
-  }
+//  @Bean
+//  InternalResourceViewResolver internalResourceViewResolver() {
+//    InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+//    resolver.setPrefix("/WEB-INF/jsp/");
+//    resolver.setSuffix(".jsp");
+//    return resolver;
+//  }
 
   @Bean
   DataSource dataSource() {
