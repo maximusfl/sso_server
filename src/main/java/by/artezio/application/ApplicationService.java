@@ -1,6 +1,7 @@
 package by.artezio.application;
 
 import by.artezio.entity.Application;
+import by.artezio.entity.ApplicationRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,8 @@ import java.util.List;
 public class ApplicationService {
     @Autowired
     ApplicationDAO applicationDAO;
+
+
 
     public void addApplication(Application application){
         applicationDAO.save(application);
@@ -42,6 +45,7 @@ public class ApplicationService {
         }
         else return true;
     }
+
 
 
 }

@@ -1,7 +1,7 @@
 <#include "header.ftl">
 
 <h1>
-    <a href="testRedireckt">myRedirect</a>
+    <a href="testRedirect">myRedirect</a>
     <a href="registration">login page</a>
 
 

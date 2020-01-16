@@ -40,4 +40,8 @@ public class ApplicationRoleService {
     public void update(ApplicationRole role) {
         roleDAO.save(role);
     }
+
+    public ApplicationRole getDefaultRole(Long id, String roleName) {
+        return roleDAO.findApplicationRoleByApplication_IdAndRoleName(id ,roleName);
+    }
 }

@@ -15,7 +15,7 @@ public class ApplicationUser implements Serializable {
   @Column(name = "name")
   private String name;
 
-  @Column(name = "username", nullable = false)
+  @Column(name = "login", nullable = false)
   private String login;
 
   @Column(name = "password", nullable = false)

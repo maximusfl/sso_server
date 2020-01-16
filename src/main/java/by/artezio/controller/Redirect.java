@@ -10,6 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class Redirect {
     @GetMapping
     public ModelAndView test(){
-        return new ModelAndView("testRedireckt" );
+        return new ModelAndView("testRedirect" );
     }
 }

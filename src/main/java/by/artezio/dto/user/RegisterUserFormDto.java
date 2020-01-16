@@ -1,13 +1,13 @@
 package by.artezio.dto.user;
 
-public class RegisterUserToFormDto {
+public class RegisterUserFormDto {
     private String name;
     private String password;
     private String urlBeforeRedirect;
     private String userName;
     private String email;
 
-    public RegisterUserToFormDto() {
+    public RegisterUserFormDto() {
     }
 
     public String getEmail() {

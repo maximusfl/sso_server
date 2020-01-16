@@ -1,11 +1,10 @@
-
 <#include "header.ftl">
 
 
 
 <#import "/spring.ftl" as spring/>
 
-<h1></h1>
+
 <section class="h-100">
     <header class="container h-100">
         <div class="d-flex align-items-center justify-content-center h-100">
@@ -17,12 +16,33 @@
                         <div style="float:right; font-size: 85%; position: relative; top:-10px">
                         </div>
                         <div class="panel-body">
-                            <form id="signupform" name="user" action="registration" method="post" class="form-horizontal" role="form">
-                                <input type="hidden" name="url" value="${user.urlBeforeRedirect}">
-
-                                <div id="signupalert" style="display:none" class="alert alert-danger">
-                                    <p>Error:</p>
-                                    <span></span>
+                            <form id="signupform" name="user" action="registration" method="post"
+                                  class="form-horizontal" role="form">
+                                <#if message??>
+                                    <div id="signupalert" class="alert alert-danger">
+                                        <p>Error:</p>
+                                        <span>${message}</span>
+                                    </div>
+                                </#if>
+                                <div class="form-group">
+                                    <label for="firstname" class="col-md-3 control-label">Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="name" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-md-3 control-label">Password</label>
+                                    <div class="col-md-9">
+                                        <input type="password" class="form-control" name="password"
+                                               placeholder="Password">
+                                    </div>
+                                </div>
+                                <input type="hidden" name="urlBeforeRedirect" value="${urlBeforeRedirect}">
+                                <div class="form-group">
+                                    <label for="lastname" class="col-md-3 control-label">User-name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="userName" placeholder="User-name">
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="col-md-3 control-label">Email</label>
@@ -32,28 +52,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="firstname" class="col-md-3 control-label">Name</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" name="name" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="lastname" class="col-md-3 control-label">User-name</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" name="userName" placeholder="User-name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password" class="col-md-3 control-label">Password</label>
-                                    <div class="col-md-9">
-                                        <input type="password" class="form-control" name="passwd"
-                                               placeholder="Password">
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <!-- Button -->
                                     <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-signup" type="submit"  class="btn btn-info"><i
+                                        <button id="btn-signup" type="submit" class="btn btn-info"><i
                                                     class="icon-hand-right"></i>
                                             &nbsp Sign Up
                                         </button>
@@ -67,10 +68,6 @@
         </div>
     </header>
 </section>
-
-
-
-
 
 
 <#include "footer.ftl">

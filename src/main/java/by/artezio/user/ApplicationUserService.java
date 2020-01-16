@@ -38,11 +38,16 @@ public class ApplicationUserService {
         return dao.count();
     }
 
-    public static void main(String[] args) {
 
+
+
+    public ApplicationUser findByLogin(String login) {
+        return dao.findByLogin(login);
     }
 
-
+    public ApplicationUser findByEmail(String email) {
+        return dao.findByEmail(email);
+    }
 }
 
 
