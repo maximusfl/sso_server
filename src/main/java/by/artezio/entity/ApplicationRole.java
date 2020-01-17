@@ -59,8 +59,8 @@ public class ApplicationRole implements Serializable {
         return roleName;
     }
 
-    public void setRoleName(String roleNmae) {
-        this.roleName = roleNmae;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
     public String getRoleDescription() {

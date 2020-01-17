@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.logging.Logger;
 
 
 @RestController
 @RequestMapping("/registration")
-public class ApplicationUserRestController {
+public class ApplicationUserRegisterController {
 	private static Logger logger = Logger.getLogger("ApplicationUserRestController");
 
 	@Autowired
@@ -31,17 +33,13 @@ public class ApplicationUserRestController {
 		return new ModelAndView("registration", "urlBeforeRedirect", urlBeforeRedirect);
 	}
 
-
 	@PostMapping
 	public ModelAndView registrationUser(@RequestParam String name,
-								 @RequestParam String password,
-								 @RequestParam String urlBeforeRedirect,
-								 @RequestParam String email,
-								 @RequestParam String userName,
-										 HttpServletRequest request) {
-
-
-
+										 @RequestParam String password,
+										 @RequestParam String urlBeforeRedirect,
+										 @RequestParam String email,
+										 @RequestParam String userName,
+										 HttpServletRequest request){
 
 		if(password == null || urlBeforeRedirect == null || email == null || userName == null){
 			request.setAttribute("message", "parametrs can't be empty");
@@ -63,7 +61,6 @@ public class ApplicationUserRestController {
 			return new ModelAndView("registration","urlBeforeRedirect", urlBeforeRedirect);
 		}
 
-
 		if(userService.findByLogin(userName) != null){
 			request.setAttribute("message", "login "+userName+" is been using already");
 			return new ModelAndView("registration","urlBeforeRedirect", urlBeforeRedirect);
@@ -74,15 +71,18 @@ public class ApplicationUserRestController {
 		}
 		logger.info("name: "+name+
 		"email: "+email+" password: "+password+" userName: " +userName+" domianName: "+ domainName);
+		ApplicationUser user = null;
+		user = userHepler.prepareUser(name,email,password,userName,domainName);
 
-		ApplicationUser user = userHepler.prepareUser(name,email,password,userName,domainName);
-		userService.addUser(user);
-
-		return new ModelAndView("login","urlBeforeRedirect", urlBeforeRedirect);
-
-
-
-
+		if(user == null){
+			request.setAttribute("message", "default role for "+domainName+" has not been set, contact to administrator");
+			return new ModelAndView("registration","urlBeforeRedirect", urlBeforeRedirect);
+		}
+		else {
+			userService.addUser(user);
+			request.setAttribute("success", "You have been registered! Enter login and password!");
+			return new ModelAndView("login", "urlBeforeRedirect", urlBeforeRedirect);
+		}
 
 	}
 

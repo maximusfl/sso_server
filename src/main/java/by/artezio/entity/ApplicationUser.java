@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(name = "application_users")
+@Table(name = "applications_users")
 public class ApplicationUser implements Serializable {
 
   @Id

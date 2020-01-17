@@ -19,21 +19,25 @@ public class SaveNewUserHepler {
 	@Autowired
 	ApplicationService applicationService;
 
-	 ApplicationUser prepareUser(String name, String email, String password, String userName,
-			String url) {
+	ApplicationUser prepareUser(String name, String email, String password, String userName, String url) {
+		ApplicationUser applicationUser = null;
 		Set<ApplicationRole> roles = new HashSet<>();
 		log.info("try to find default role");
 		Long id = applicationService.findApplicationByUrl(url).getId();
-		ApplicationRole defaultRole = roleService.getDefaultRole(id, "DEFAULT");
-		log.info("role found!");
-		roles.add(defaultRole);
+		ApplicationRole defaultRole;
+		defaultRole = roleService.getDefaultRole(id, "DEFAULT");
+		if (defaultRole != null) {
+			log.info("role found! name: " + defaultRole.getRoleName());
+			roles.add(defaultRole);
 
-		ApplicationUser applicationUser = new ApplicationUser();
-		applicationUser.setName(name);
-		applicationUser.setEmail(email);
-		applicationUser.setPassword(password);
-		applicationUser.setLogin(userName);
-		applicationUser.setRole(roles);
+			applicationUser = new ApplicationUser();
+			applicationUser.setName(name);
+			applicationUser.setEmail(email);
+			applicationUser.setPassword(password);
+			applicationUser.setLogin(userName);
+			applicationUser.setRole(roles);
+
+		}
 		return applicationUser;
 	}
 }

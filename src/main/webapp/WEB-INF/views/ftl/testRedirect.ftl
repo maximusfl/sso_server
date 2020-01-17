@@ -1,11 +1,7 @@
 <#include "header.ftl">
 
 <h1>
-    <a href="testRedirect">myRedirect</a>
-    <a href="registration">login page</a>
-
-
-
+    <a href="registration">execute redirect to http://localhost:8080/registration</a>
 </h1>
 
 

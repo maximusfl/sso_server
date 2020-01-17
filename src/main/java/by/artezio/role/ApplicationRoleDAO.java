@@ -10,14 +10,9 @@ import java.util.logging.Logger;
 
 public interface ApplicationRoleDAO extends JpaRepository<ApplicationRole, Long> {
 
-  @Query(value = "from ApplicationRole where application.id = ?1")
-  List<ApplicationRole> getApplicationRolesByApplicationID(Long id);
+	@Query(value = "from ApplicationRole where application.id = ?1")
+	List<ApplicationRole> getApplicationRolesByApplicationID(Long id);
 
-
-  ApplicationRole findApplicationRoleByApplication_IdAndRoleName(Long id, String roleName);
-  
-
-
-
+	ApplicationRole findApplicationRoleByApplication_IdAndRoleName(Long id, String roleName);
 
 }

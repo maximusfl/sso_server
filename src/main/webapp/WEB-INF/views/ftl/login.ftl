@@ -4,7 +4,6 @@
 
 <#import "/spring.ftl" as spring/>
 
-<h1>${user.urlBeforeRedirect}</h1>
 
 
 
@@ -17,18 +16,27 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <div class="panel-title">Sign In</div>
-
                     </div>
 
                     <div style="padding-top:30px" class="panel-body">
 
-                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 
-                        <form id="loginform" class="form-horizontal" role="form">
-
+                        <form action="login" method="post" id="loginform" class="form-horizontal" role="form">
+                            <#if success ??>
+                                <div  id="login-alert" class="alert alert-info col-sm-12">
+                                    <p>Success!</p>
+                                    <span>${success}</span>
+                                </div>
+                            </#if>
+                            <#if message ??>
+                                <div  id="login-alert" class="alert alert-danger col-sm-12">
+                                    <p>Error:</p>
+                                    <span>${message}</span>
+                                </div>
+                            </#if>
                             <div style="margin-bottom: 25px" class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input id="login-username" type="text" class="form-control" name="username" value=""
+                                <input id="login-username" type="text" class="form-control" name="login"
                                        placeholder="username">
                             </div>
 
@@ -37,13 +45,16 @@
                                 <input id="login-password" type="password" class="form-control" name="password"
                                        placeholder="password">
                             </div>
+                            <input type="hidden" name="urlBeforeRedirect" value="${urlBeforeRedirect}">
 
 
                             <div style="margin-top:10px" class="form-group">
                                 <!-- Button -->
 
                                 <div class="col-sm-12 controls">
-                                    <a id="btn-login" href="#" class="btn btn-success">Login </a>
+
+                                    <button id="btn-login"  type="submit" class="btn btn-success">Login </button>
+
                                 </div>
                             </div>
                         </form>

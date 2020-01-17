@@ -31,7 +31,7 @@
 
     <changeSet id="3" author="max">
         <sql>
-            CREATE TABLE `sso_db`.`application_users`(
+            CREATE TABLE `sso_db`.`applications_users`(
             `id` INT NOT NULL AUTO_INCREMENT,
             `name` VARCHAR(70),
             `password` VARCHAR(70) NOT NULL,
@@ -86,7 +86,7 @@
             ON UPDATE NO ACTION,
             ADD CONSTRAINT `fk_user_role_app_user`
             FOREIGN KEY(`user_id`)
-            REFERENCES `sso_db`.`application_users` (`id`)
+            REFERENCES `sso_db`.`applications_users` (`id`)
             ON DELETE NO ACTION
             ON UPDATE NO ACTION;
         </sql>
@@ -98,7 +98,7 @@
             ALTER TABLE `sso_db`.`sessions`
             ADD CONSTRAINT `fk_session_app_user`
             FOREIGN KEY(`user_id`)
-            REFERENCES `sso_db`.`application_users`(`id`)
+            REFERENCES `sso_db`.`applications_users`(`id`)
             ON DELETE NO ACTION
             ON UPDATE NO ACTION;
         </sql>
