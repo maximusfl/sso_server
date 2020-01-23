@@ -21,7 +21,7 @@ public class Test {
         logger.info("called test");
         RegisterUserFormDto user = new RegisterUserFormDto();
         user.setUrlBeforeRedirect(request.getHeader("referer"));
-        request.setAttribute("user",user);
+        request.setAttribute("user", user);
 
         response.sendRedirect("registration");
         return new ModelAndView("registration");

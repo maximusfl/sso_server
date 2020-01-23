@@ -13,19 +13,19 @@ public class SessionService {
     @Autowired
     SessionDAO sessionDAO;
 
-    public void addSession(Session session){
+    public void addSession(Session session) {
         sessionDAO.save(session);
     }
 
-    public Session getSessionById(String id){
+    public Session getSessionById(String id) {
         return sessionDAO.findOne(id);
     }
 
-    public void deleteSessionById (String id){
+    public void deleteSessionById(String id) {
         sessionDAO.delete(id);
     }
 
-    public List<Session> getAllSessions(){
+    public List<Session> getAllSessions() {
         return sessionDAO.findAll();
     }
 

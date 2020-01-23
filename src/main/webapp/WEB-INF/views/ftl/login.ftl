@@ -23,13 +23,13 @@
 
                         <form action="login" method="post" id="loginform" class="form-horizontal" role="form">
                             <#if success ??>
-                                <div  id="login-alert" class="alert alert-info col-sm-12">
+                                <div id="login-alert" class="alert alert-info col-sm-12">
                                     <p>Success!</p>
                                     <span>${success}</span>
                                 </div>
                             </#if>
                             <#if message ??>
-                                <div  id="login-alert" class="alert alert-danger col-sm-12">
+                                <div id="login-alert" class="alert alert-danger col-sm-12">
                                     <p>Error:</p>
                                     <span>${message}</span>
                                 </div>
@@ -53,7 +53,7 @@
 
                                 <div class="col-sm-12 controls">
 
-                                    <button id="btn-login"  type="submit" class="btn btn-success">Login </button>
+                                    <button id="btn-login" type="submit" class="btn btn-success">Login</button>
 
                                 </div>
                             </div>

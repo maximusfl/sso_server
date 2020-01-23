@@ -40,22 +40,23 @@ import java.util.Properties;
 @Configuration
 @EnableWebMvc
 public class JpaConfiguration extends WebMvcConfigurationSupport {
-  @Override
-  public void addCorsMappings(CorsRegistry registry) {
-    registry
-        .addMapping("/**")
-        .allowedOrigins("*")
-        .allowedMethods("GET", "OPTIONS", "PUT", "POST", "DELETE");
-  }
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry
+                .addMapping("/**")
+                .allowedOrigins("*")
+                .allowedMethods("GET", "OPTIONS", "PUT", "POST", "DELETE");
+    }
 
-  @Autowired private Environment environment;
+    @Autowired
+    private Environment environment;
 
-  @Bean
-  public RequestMappingHandlerMapping requestMappingHandlerMapping() {
-    RequestMappingHandlerMapping handlerMapping = super.requestMappingHandlerMapping();
-    handlerMapping.setUseSuffixPatternMatch(false);
-    return handlerMapping;
-  }
+    @Bean
+    public RequestMappingHandlerMapping requestMappingHandlerMapping() {
+        RequestMappingHandlerMapping handlerMapping = super.requestMappingHandlerMapping();
+        handlerMapping.setUseSuffixPatternMatch(false);
+        return handlerMapping;
+    }
 
 //  @Bean
 //  InternalResourceViewResolver internalResourceViewResolver() {
@@ -65,58 +66,58 @@ public class JpaConfiguration extends WebMvcConfigurationSupport {
 //    return resolver;
 //  }
 
-  @Bean
-  DataSource dataSource() {
-    DriverManagerDataSource dataSource = new DriverManagerDataSource();
-    dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
-    dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
-    dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
-    dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
-    return dataSource;
-  }
+    @Bean
+    DataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
+        dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
+        dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
+        dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
+        return dataSource;
+    }
 
-  @Bean
-  public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws NamingException {
-    LocalContainerEntityManagerFactoryBean factoryBean =
-        new LocalContainerEntityManagerFactoryBean();
-    factoryBean.setDataSource(dataSource());
-    factoryBean.setPackagesToScan("by.artezio.entity");
-    factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
-    factoryBean.setJpaProperties(jpaProperties());
-    return factoryBean;
-  }
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws NamingException {
+        LocalContainerEntityManagerFactoryBean factoryBean =
+                new LocalContainerEntityManagerFactoryBean();
+        factoryBean.setDataSource(dataSource());
+        factoryBean.setPackagesToScan("by.artezio.entity");
+        factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
+        factoryBean.setJpaProperties(jpaProperties());
+        return factoryBean;
+    }
 
-  @Bean
-  public JpaVendorAdapter jpaVendorAdapter() {
-    HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
-    return hibernateJpaVendorAdapter;
-  }
+    @Bean
+    public JpaVendorAdapter jpaVendorAdapter() {
+        HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
+        return hibernateJpaVendorAdapter;
+    }
 
-  private Properties jpaProperties() {
-    Properties properties = new Properties();
-    properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
-    properties.put(
-        "hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
-    properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
-    properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
-    return properties;
-  }
+    private Properties jpaProperties() {
+        Properties properties = new Properties();
+        properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
+        properties.put(
+                "hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
+        properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
+        return properties;
+    }
 
-  @Bean
-  @Autowired
-  public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
-    JpaTransactionManager txManager = new JpaTransactionManager();
-    txManager.setEntityManagerFactory(emf);
-    return txManager;
-  }
+    @Bean
+    @Autowired
+    public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
+        JpaTransactionManager txManager = new JpaTransactionManager();
+        txManager.setEntityManagerFactory(emf);
+        return txManager;
+    }
 
-  @Bean
-  BCryptPasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder(12);
-  }
+    @Bean
+    BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(12);
+    }
 
-  public static void main(String[] args) {
-    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
-    System.out.println("password->" + encoder.encode("password"));
-  }
+    public static void main(String[] args) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+        System.out.println("password->" + encoder.encode("password"));
+    }
 }

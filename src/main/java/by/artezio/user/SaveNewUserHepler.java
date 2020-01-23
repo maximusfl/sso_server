@@ -1,5 +1,7 @@
 package by.artezio.user;
+
 import by.artezio.application.ApplicationService;
+import by.artezio.dto.user.RegisterUserFormDto;
 import by.artezio.entity.ApplicationRole;
 import by.artezio.entity.ApplicationUser;
 import by.artezio.role.ApplicationRoleService;
@@ -12,32 +14,31 @@ import java.util.logging.Logger;
 
 @Component
 public class SaveNewUserHepler {
-	private static Logger log = Logger.getLogger("SaveNewUserHepler");
-	@Autowired
-	ApplicationRoleService roleService;
+    private static Logger log = Logger.getLogger("SaveNewUserHepler");
+    @Autowired
+    ApplicationRoleService roleService;
 
-	@Autowired
-	ApplicationService applicationService;
+    @Autowired
+    ApplicationService applicationService;
 
-	ApplicationUser prepareUser(String name, String email, String password, String userName, String url) {
-		ApplicationUser applicationUser = null;
-		Set<ApplicationRole> roles = new HashSet<>();
-		log.info("try to find default role");
-		Long id = applicationService.findApplicationByUrl(url).getId();
-		ApplicationRole defaultRole;
-		defaultRole = roleService.getDefaultRole(id, "DEFAULT");
-		if (defaultRole != null) {
-			log.info("role found! name: " + defaultRole.getRoleName());
-			roles.add(defaultRole);
+    ApplicationUser prepareUser(RegisterUserFormDto userFormDto, String url) {
+        ApplicationUser applicationUser = null;
+        Set<ApplicationRole> roles = new HashSet<>();
+        log.info("try to find default role");
+        Long id = applicationService.findApplicationByUrl(url).getId();
+        ApplicationRole defaultRole;
+        defaultRole = roleService.getDefaultRole(id, "DEFAULT");
+        if (defaultRole != null) {
+            log.info("role found! name: " + defaultRole.getRoleName());
+            roles.add(defaultRole);
+            applicationUser = new ApplicationUser();
+            applicationUser.setName(userFormDto.getName());
+            applicationUser.setEmail(userFormDto.getEmail());
+            applicationUser.setPassword(userFormDto.getPassword());
+            applicationUser.setLogin(userFormDto.getUserName());
+            applicationUser.setRole(roles);
 
-			applicationUser = new ApplicationUser();
-			applicationUser.setName(name);
-			applicationUser.setEmail(email);
-			applicationUser.setPassword(password);
-			applicationUser.setLogin(userName);
-			applicationUser.setRole(roles);
-
-		}
-		return applicationUser;
-	}
+        }
+        return applicationUser;
+    }
 }

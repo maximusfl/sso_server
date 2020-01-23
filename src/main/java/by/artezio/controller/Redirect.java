@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/myRedirect")
 public class Redirect {
     @GetMapping
-    public ModelAndView test(){
-        return new ModelAndView("testRedirect" );
+    public ModelAndView test() {
+        return new ModelAndView("testRedirect");
     }
 }

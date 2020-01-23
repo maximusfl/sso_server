@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ErrorController {
 
     @GetMapping("/{appUrl}")
-    public String showUrlExistsError(@PathVariable String appUrl, Model model){
-        model.addAttribute("message" ,appUrl+" has registred already");
+    public String showUrlExistsError(@PathVariable String appUrl, Model model) {
+        model.addAttribute("message", appUrl + " has registred already");
         return "registration";
     }
 

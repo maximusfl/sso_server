@@ -20,38 +20,42 @@ import javax.transaction.Transactional;
 import static org.junit.Assert.*;
 
 
-
 @RunWith(SpringRunner.class)
 @Transactional
 @WebAppConfiguration
 @ContextConfiguration(loader = AnnotationConfigWebContextLoader.class, classes = {JpaConfiguration.class})
 public class UserSaveSpec implements TestSampleData {
 
-	@Autowired
-	private ApplicationUserService userService;
+    @Autowired
+    private ApplicationUserService userService;
 
-	@Before
-	public void clean() {
-		userService.deleteAll();
-	}
+    @Before
+    public void clean() {
+        userService.deleteAll();
+    }
 
-	@Test
-	public void isDataBaseEmpty() {
-		assertTrue(userService.findAll().isEmpty());
-	}
+    @Test
+    public void isDataBaseEmpty() {
+        assertTrue(userService.findAll().isEmpty());
+    }
 
-	@Test
-	public void saveUserWithMock() {
-		ApplicationUserDAO localMockRepository = Mockito.mock(ApplicationUserDAO.class);
-		ApplicationUser testUser = TestSampleData.testUser;
-		localMockRepository.save(testUser);
-		Mockito.verify(localMockRepository).save(testUser);
-	}
+    @Test
+    public void saveUserWithMock() {
+        ApplicationUserDAO localMockRepository = Mockito.mock(ApplicationUserDAO.class);
+        ApplicationUser testUser = TestSampleData.testUser;
+        localMockRepository.save(testUser);
+        Mockito.verify(localMockRepository).save(testUser);
+    }
 
-	@Test
-	public void addTestUser() {
-		userService.addUser(testUser);
-		assertNotNull(userService.findAll());
-	}
+    @Test
+    public void addTestUser() {
+        userService.addUser(testUser);
+        assertNotNull(userService.findAll());
+    }
+
+    @Test
+    public void findByApp() {
+        userService.findAllByApplicationId(1L);
+    }
 
 }

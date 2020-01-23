@@ -30,16 +30,13 @@ public class ApplicationUserService {
         return dao.findOne(id);
     }
 
-    public void deleteById(Long id){
+    public void deleteById(Long id) {
         dao.delete(id);
     }
 
-    public Long getCountUsers(){
+    public Long getCountUsers() {
         return dao.count();
     }
-
-
-
 
     public ApplicationUser findByLogin(String login) {
         return dao.findByLogin(login);
@@ -48,6 +45,9 @@ public class ApplicationUserService {
     public ApplicationUser findByEmail(String email) {
         return dao.findByEmail(email);
     }
+
+
+    public List<ApplicationUser> findAllByApplicationId(Long id) {
+        return dao.findApplicationUsersByApplicationId(id);
+    }
 }
-
-

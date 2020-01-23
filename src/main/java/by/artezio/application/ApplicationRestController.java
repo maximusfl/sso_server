@@ -16,13 +16,13 @@ public class ApplicationRestController {
     ApplicationService applicationService;
 
     @GetMapping
-    public List<Application> getAllApplications(){
+    public List<Application> getAllApplications() {
         log.info("called getAllApplications");
         return applicationService.getAllApplications();
     }
 
     @GetMapping("/{id}")
-    public Application findApplicationById(@PathVariable Long id){
+    public Application findApplicationById(@PathVariable Long id) {
         return applicationService.findApplicationById(id);
     }
 
@@ -34,7 +34,6 @@ public class ApplicationRestController {
                 " description: " + application.getDescription());
         applicationService.addApplication(application);
     }
-
 
 
 }

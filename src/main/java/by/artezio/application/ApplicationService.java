@@ -15,37 +15,35 @@ public class ApplicationService {
     ApplicationDAO applicationDAO;
 
 
-
-    public void addApplication(Application application){
+    public void addApplication(Application application) {
         applicationDAO.save(application);
     }
 
-    public Application findApplicationById(Long id){
+    public Application findApplicationById(Long id) {
         return applicationDAO.findOne(id);
     }
 
-    public void deleteAllApplications(){
+    public void deleteAllApplications() {
         applicationDAO.deleteAll();
     }
 
-    public void deleteApplicationById(Long id){
+    public void deleteApplicationById(Long id) {
         applicationDAO.delete(id);
     }
-    public List<Application> getAllApplications(){
+
+    public List<Application> getAllApplications() {
         return applicationDAO.findAll();
     }
 
-    public Application findApplicationByUrl(String url){
+    public Application findApplicationByUrl(String url) {
         return applicationDAO.findByUrl(url);
     }
 
-    public Boolean isApplicationUrlExist(String url){
-        if(applicationDAO.findByUrl(url) == null){
+    public Boolean isApplicationUrlExist(String url) {
+        if (applicationDAO.findByUrl(url) == null) {
             return false;
-        }
-        else return true;
+        } else return true;
     }
-
 
 
 }

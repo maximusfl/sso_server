@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "applications_roles")
-@JsonIgnoreProperties(value= {"user"})
+@JsonIgnoreProperties(value = {"user"})
 public class ApplicationRole implements Serializable {
 
     public ApplicationRole(Application application, String roleName, String roleDescription, Set<ApplicationUser> user) {
@@ -79,13 +79,5 @@ public class ApplicationRole implements Serializable {
         this.user = user;
     }
 
-    @Override
-    public String toString() {
-        return "ApplicationRole{" +
-                "id=" + id +
-                ", application=" + application +
-                ", roleName='" + roleName + '\'' +
-                ", roleDescription='" + roleDescription + '\'' +
-                '}';
-    }
+
 }

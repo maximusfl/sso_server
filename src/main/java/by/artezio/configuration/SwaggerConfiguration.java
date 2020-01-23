@@ -17,42 +17,42 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @EnableWebMvc
 public class SwaggerConfiguration extends WebMvcConfigurerAdapter {
-  @Bean
-  public Docket api() {
-    return new Docket(DocumentationType.SWAGGER_2)
-        .select()
-        .apis(RequestHandlerSelectors.any())
-        .paths(PathSelectors.any())
-        .build();
-  }
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
+                .build();
+    }
 
-  @Override
-  public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    registry
-        .addResourceHandler("swagger-ui.html")
-        .addResourceLocations("classpath:/META-INF/resources/");
-    registry
-        .addResourceHandler("/webjars/**")
-        .addResourceLocations("classpath:/META-INF/resources/webjars/");
-  }
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+                .addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+        registry
+                .addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
 
-  @Bean
-  public FreeMarkerViewResolver freemarkerViewResolver() {
-    FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
-    resolver.setCache(true);
-    resolver.setPrefix("");
-    resolver.setSuffix(".ftl");
-    resolver.setRequestContextAttribute("contextPath");
-    return resolver;
-  }
+    @Bean
+    public FreeMarkerViewResolver freemarkerViewResolver() {
+        FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
+        resolver.setCache(true);
+        resolver.setPrefix("");
+        resolver.setSuffix(".ftl");
+        resolver.setRequestContextAttribute("contextPath");
+        return resolver;
+    }
 
 
-  @Bean
-  public FreeMarkerConfigurer freemarkerConfig() {
-    FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
-    freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/ftl/");
-    return freeMarkerConfigurer;
-  }
+    @Bean
+    public FreeMarkerConfigurer freemarkerConfig() {
+        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
+        freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/ftl/");
+        return freeMarkerConfigurer;
+    }
 
 
 }

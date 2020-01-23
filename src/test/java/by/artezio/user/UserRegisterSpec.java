@@ -13,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.AnnotationConfigWebContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
+
 import static org.junit.Assert.*;
 
 import javax.transaction.Transactional;
@@ -23,24 +24,24 @@ import java.io.IOException;
 @WebAppConfiguration
 @ContextConfiguration(loader = AnnotationConfigWebContextLoader.class, classes = {JpaConfiguration.class})
 public class UserRegisterSpec implements TestSampleData {
-	@Autowired
-	private ApplicationUserService userService;
+    @Autowired
+    private ApplicationUserService userService;
 
-	@Test
-	public void testStatus() throws IOException {
+    @Test
+    public void testStatus() throws IOException {
 
-		// Given
-		HttpUriRequest request = new HttpPost("http://localhost:8080/api_v1/registration");
-		request.setHeader("Content-type", "application/json");
+        // Given
+        HttpUriRequest request = new HttpPost("http://localhost:8080/api_v1/registration");
+        request.setHeader("Content-type", "application/json");
 
-		// When
-		HttpResponse response = HttpClientBuilder.create().build().execute(request);
+        // When
+        HttpResponse response = HttpClientBuilder.create().build().execute(request);
 
-		// Then
-        assertEquals(200,response.getStatusLine().getStatusCode());
+        // Then
+        assertEquals(200, response.getStatusLine().getStatusCode());
 
-		
-	}
+
+    }
 
 
 }

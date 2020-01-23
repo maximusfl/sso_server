@@ -1,4 +1,5 @@
 package by.artezio;
+
 import by.artezio.entity.Application;
 import by.artezio.entity.ApplicationRole;
 import by.artezio.entity.ApplicationUser;
@@ -14,10 +15,10 @@ public interface TestSampleData {
 
     ApplicationUser testUser = new ApplicationUser(
 
-                    "testName",
-                    "testLogin",
-                    "testPassword",
-                    "test@email.ru",
+            "testName",
+            "testLogin",
+            "testPassword",
+            "test@email.ru",
             Collections.emptySet(),
             Collections.emptySet());
 
@@ -34,12 +35,11 @@ public interface TestSampleData {
             Collections.emptySet());
 
 
-
     Session testSession = new Session(
-            RandomStringUtils.random(10,true,true),
+            RandomStringUtils.random(10, true, true),
             new Date(),
             testUser);
 
-    }
+}
 
 
