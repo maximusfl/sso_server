@@ -57,7 +57,7 @@ public class RoleServiceSpec implements TestSampleData {
     }
 
     @Test
-    public void getApplicationByrole() {
+    public void getApplicationByRole() {
         testApplication.setRoles(new HashSet<ApplicationRole>(Set.of(testRole)));
         System.out.println(testApplication);
 

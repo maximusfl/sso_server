@@ -1,11 +1,15 @@
 package by.artezio.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "applications_users")
+@JsonIgnoreProperties(ignoreUnknown = true, value = {"session","role"})
+
 public class ApplicationUser implements Serializable {
 
     @Id

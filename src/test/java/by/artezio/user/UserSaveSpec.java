@@ -55,7 +55,8 @@ public class UserSaveSpec implements TestSampleData {
 
     @Test
     public void findByApp() {
-        userService.findAllByApplicationId(1L);
+        System.out.println(userService.findAllByApplicationId(1L));
+
     }
 
 }
