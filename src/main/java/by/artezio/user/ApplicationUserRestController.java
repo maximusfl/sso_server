@@ -1,6 +1,8 @@
 package by.artezio.user;
 
+import by.artezio.entity.ApplicationRole;
 import by.artezio.entity.ApplicationUser;
+import by.artezio.role.ApplicationRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,23 +20,32 @@ public class ApplicationUserRestController {
     @Autowired
     ApplicationUserService userService;
 
+    @Autowired
+    ApplicationRoleService roleService;
+
     @GetMapping
-    public List<ApplicationUser> getUsersByApplication(@PathVariable Long id){
-        logger.info("called getUsersByApplication method" );
-        for(ApplicationUser user : userService.findAllByApplicationId(id)){
+    public List<ApplicationUser> getUsersByApplication(@PathVariable Long id) {
+        logger.info("called getUsersByApplication method");
+        for (ApplicationUser user : userService.findAllByApplicationId(id)) {
             logger.info(" User: " + user);
         }
         return userService.findAllByApplicationId(id);
     }
 
     @GetMapping(value = "/{id}")
-    public ApplicationUser getUserById(@PathVariable Long id){
+    public ApplicationUser getUserById(@PathVariable Long id) {
         logger.info("called getUserByApplicationId ");
         ApplicationUser user = userService.findUserById(id);
-        logger.info("user: "+user);
+        logger.info("user: " + user);
         return user;
 
 
+    }
+
+    @GetMapping(value = "/{userId}/role")
+    public List<ApplicationRole> getRolesByAppIdAndUserId( @PathVariable Long id, @PathVariable Long userId){
+        logger.info("called getRolesByAppIdAndUserId");
+        return roleService.findUserRolesByUserIdAndApplicationId(id,userId);
     }
 
 }

@@ -44,4 +44,8 @@ public class ApplicationRoleService {
     public ApplicationRole getDefaultRole(Long id, String roleName) {
         return roleDAO.findApplicationRoleByApplication_IdAndRoleName(id, roleName);
     }
+
+    public List<ApplicationRole> findUserRolesByUserIdAndApplicationId(Long id, Long userId) {
+        return roleDAO.findApplicationRolesByApplicationAndUser(id,userId);
+    }
 }

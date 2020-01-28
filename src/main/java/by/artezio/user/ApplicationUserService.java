@@ -1,5 +1,6 @@
 package by.artezio.user;
 
+import by.artezio.entity.ApplicationRole;
 import by.artezio.entity.ApplicationUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,4 +51,7 @@ public class ApplicationUserService {
     public List<ApplicationUser> findAllByApplicationId(Long id) {
         return dao.findApplicationUsersByApplicationId(id);
     }
+
+
+
 }

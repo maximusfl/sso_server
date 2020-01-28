@@ -1,6 +1,7 @@
 package by.artezio.user;
 
 
+import by.artezio.entity.ApplicationRole;
 import by.artezio.entity.ApplicationUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,6 +18,8 @@ public interface ApplicationUserDAO extends JpaRepository<ApplicationUser, Long>
 
     @Query(value = "select user from   ApplicationUser user  join user.role role  where role.application.id =?1")
     List<ApplicationUser> findApplicationUsersByApplicationId(Long id);
+
+
 }
 
 
