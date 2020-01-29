@@ -1,5 +1,6 @@
 package by.artezio.user;
 
+import by.artezio.application.DomainNameExtractor;
 import by.artezio.entity.ApplicationUser;
 import by.artezio.entity.Session;
 import by.artezio.session.SessionService;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @RestController
@@ -24,8 +26,19 @@ public class ApplicationUserLoginController {
     private static Logger logger = Logger.getLogger("ApplicationUserLoginController");
 
     @GetMapping
-    public ModelAndView showLoginPage() {
-        return new ModelAndView("login");
+    public ModelAndView showLoginPage(HttpServletRequest request) {
+
+        logger.info("called showLoginPage");
+        Optional<String> urlBeforeRedirect;
+        logger.info("Optional<String> urlBeforeRedirect;");
+        urlBeforeRedirect = Optional.ofNullable(request.getHeader("referer"));
+        logger.info("urlBeforeRedirect = Optional.of(request.getHeader(\"referer\"));");
+        if (!urlBeforeRedirect.isPresent()&& urlBeforeRedirect.isEmpty()){
+            return new ModelAndView("error","message","Error: application is undefind!");
+        }
+        logger.info("urlBeforeRedirect: " + urlBeforeRedirect);
+        return new ModelAndView("login", "urlBeforeRedirect", urlBeforeRedirect);
+
     }
 
     @PostMapping
@@ -35,6 +48,14 @@ public class ApplicationUserLoginController {
         if (login == null || password == null || login.isEmpty() || password.isEmpty()) {
             request.setAttribute("message", "login and password can't be empty");
             return new ModelAndView("login", "urlBeforeRedirect", urlBeforeRedirect);
+        }
+
+        if (urlBeforeRedirect == null) {
+            logger.info("called DomainNameExtractor because urlBeforeRedirect in url was null; ");
+            DomainNameExtractor extractor = new DomainNameExtractor();
+            urlBeforeRedirect = extractor.extractDomainName(request.getContextPath());
+            logger.info("urlBeforeRedirect: " + urlBeforeRedirect);
+
         }
 
         ApplicationUser loadedUser = userService.findByLogin(login);

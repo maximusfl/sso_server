@@ -13,6 +13,8 @@ import org.springframework.test.context.web.AnnotationConfigWebContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.transaction.Transactional;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -65,5 +67,18 @@ public class RoleServiceSpec implements TestSampleData {
     public void testFindRolesByApplicationAndUser(){
         System.out.println(roleService.findUserRolesByUserIdAndApplicationId(1l,1l));
 
+    }
+
+    @Test
+    public void getPid() throws IOException {
+        Process process = Runtime.getRuntime().exec("java -version");
+        ProcessHandle.Info info = process.info();
+        System.out.println("PID = " + process.pid());
+        System.out.println("User = " + info.user());
+        System.out.println("Command = " + info.command());
+        System.out.println("Args = " + info.arguments().map(Arrays::toString));
+        System.out.println("Command Line = " + info.commandLine());
+        System.out.println("Start Time = " + info.startInstant());
+        System.out.println("Total Time = " + info.totalCpuDuration());
     }
 }
