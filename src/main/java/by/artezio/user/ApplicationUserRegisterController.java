@@ -37,7 +37,7 @@ public class ApplicationUserRegisterController {
 
     @PostMapping
     public ModelAndView registrationUser(@Valid @ModelAttribute RegisterUserFormDto userFormDto,
-                                         BindingResult bindingResult, HttpServletRequest request) {
+                                         BindingResult bindingResult, HttpServletRequest request)  {
 
         logger.info("content-type: " + request.getHeader("content-type"));
 

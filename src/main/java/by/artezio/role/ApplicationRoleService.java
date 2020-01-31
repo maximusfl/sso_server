@@ -6,10 +6,12 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Service
 @Transactional
 public class ApplicationRoleService {
+    private static Logger logger = Logger.getLogger("ApplicationRoleService");
     @Autowired
     ApplicationRoleDAO roleDAO;
 
@@ -47,5 +49,12 @@ public class ApplicationRoleService {
 
     public List<ApplicationRole> findUserRolesByUserIdAndApplicationId(Long id, Long userId) {
         return roleDAO.findApplicationRolesByApplicationAndUser(id,userId);
+    }
+
+    public void deleteRoleFromUserByApplication(Long roleId, Long userId) {
+        logger.info("called deleteRoleFromUserByApplication");
+
+        logger.info("deleteApplicationRoleByApplicationAndAndUser has been worked already");
+
     }
 }

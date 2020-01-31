@@ -69,6 +69,7 @@ public class ApplicationUserLoginController {
                 session.setUser(loadedUser);
                 session.setId(request.getSession().getId());
                 sessionService.addSession(session);
+                logger.info("urlBeforeRedirect: "+urlBeforeRedirect);
                 response.sendRedirect(urlBeforeRedirect);
             }
         }

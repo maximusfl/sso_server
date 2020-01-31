@@ -1,6 +1,6 @@
 package by.artezio.user;
 
-import by.artezio.entity.ApplicationRole;
+
 import by.artezio.entity.ApplicationUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +52,9 @@ public class ApplicationUserService {
         return dao.findApplicationUsersByApplicationId(id);
     }
 
+        public void update(ApplicationUser user){
+        dao.saveAndFlush(user);
+        }
 
 
 }

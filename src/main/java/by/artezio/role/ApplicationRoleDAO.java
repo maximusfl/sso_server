@@ -18,4 +18,6 @@ public interface ApplicationRoleDAO extends JpaRepository<ApplicationRole, Long>
 
     @Query(value = "select roles from ApplicationRole roles join roles.application app join roles.user us where app.id=?1 and us.id=?2")
     List<ApplicationRole> findApplicationRolesByApplicationAndUser(Long id, Long userId);
+
+
 }
