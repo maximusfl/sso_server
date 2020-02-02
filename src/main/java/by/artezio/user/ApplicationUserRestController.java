@@ -37,8 +37,6 @@ public class ApplicationUserRestController {
         ApplicationUser user = userService.findUserById(id);
         logger.info("user: " + user);
         return user;
-
-
     }
 
     @GetMapping(value = "/{userId}/role")
@@ -50,25 +48,23 @@ public class ApplicationUserRestController {
     @Transactional
     @DeleteMapping(value = "/{userId}/role/{roleId}")
     public void deleteRoleFromUserByApplicationAndRoleId(@PathVariable Long userId, @PathVariable Long roleId) {
-        logger.info("called deleteRoleFromUserByApplicationAndRoleId");
-
-        logger.info("userId: " + userId);
-        logger.info("roleId: " + roleId);
-
         ApplicationUser loadedUser = userService.findUserById(userId);
-        logger.info("loadedUser: id: "+loadedUser.getId()+ " name: "+loadedUser.getName()+" email: "+loadedUser.getEmail());
-
         Set<ApplicationRole> roles = loadedUser.getRole();
-        logger.warning("Set<ApplicationRole> roles = loadedUser.getRole();");
-        logger.info("roles count: "+roles.size());
         roles.removeIf(applicationRole -> applicationRole.getId().equals(roleId));
-        logger.info("roles new count: "+roles.size());
-
         loadedUser.setRole(roles);
         userService.update(loadedUser);
+    }
+
+    @PutMapping(value = "/{userId}/role")
+    @Transactional
+    public void updateRole(@PathVariable Long userId, @RequestBody Long roleId) {
+        logger.info("called updateRole");
+        ApplicationUser loadedUser = userService.findUserById(userId);
+        ApplicationRole newRole = roleService.findRoleById(roleId);
+        loadedUser.getRole().add(newRole);
+        logger.info("roles count: " + loadedUser.getRole().size());
+        userService.update(loadedUser);
         logger.info("success");
-
-
     }
 
 }
