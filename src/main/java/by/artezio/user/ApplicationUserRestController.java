@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -37,6 +36,16 @@ public class ApplicationUserRestController {
         ApplicationUser user = userService.findUserById(id);
         logger.info("user: " + user);
         return user;
+    }
+
+    @Transactional
+    @DeleteMapping(value = "/{userId}")
+    public void deleteUserFromCurrentApplication(@PathVariable Long id, @PathVariable Long userId) {
+        logger.info("called  deleteUserFromCurrentApplication");
+        ApplicationUser loadedUser = userService.findUserById(userId);
+        loadedUser.getRole().removeIf((applicationRole -> applicationRole.getApplication().getId().equals(id)));
+        userService.update(loadedUser);
+
     }
 
     @GetMapping(value = "/{userId}/role")

@@ -16,7 +16,7 @@ public interface ApplicationUserDAO extends JpaRepository<ApplicationUser, Long>
     @Query(value = "from ApplicationUser  where email =?1")
     ApplicationUser findByEmail(String email);
 
-    @Query(value = "select user from   ApplicationUser user  join user.role role  where role.application.id =?1")
+    @Query(value = "select distinct user from   ApplicationUser user  join user.role role  where role.application.id =?1")
     List<ApplicationUser> findApplicationUsersByApplicationId(Long id);
 
 
