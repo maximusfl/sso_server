@@ -22,9 +22,8 @@ public class Test {
         RegisterUserFormDto user = new RegisterUserFormDto();
         user.setUrlBeforeRedirect(request.getHeader("referer"));
         request.setAttribute("user", user);
-
         response.sendRedirect("registration");
-        return new ModelAndView("registration");
+        return new ModelAndView("registration","urlBeforeRedirect", user.getUrlBeforeRedirect());
     }
 
 }

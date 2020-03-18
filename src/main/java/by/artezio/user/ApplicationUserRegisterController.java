@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.http.HttpStatus;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.logging.Logger;
@@ -37,12 +37,13 @@ public class ApplicationUserRegisterController {
 
     @PostMapping
     public ModelAndView registrationUser(@Valid @ModelAttribute RegisterUserFormDto userFormDto,
-                                         BindingResult bindingResult, HttpServletRequest request) {
+                                         BindingResult bindingResult, HttpServletRequest request, HttpStatus status) {
 
         logger.info("content-type: " + request.getHeader("content-type"));
 
         if (bindingResult.hasErrors()) {
             request.setAttribute("message", "parametrs can't be empty");
+
             return new ModelAndView("registration", "urlBeforeRedirect", userFormDto.getUrlBeforeRedirect());
         }
 

@@ -6,20 +6,20 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 public class RegisterUserFormDto implements Serializable {
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "test")
+    @NotEmpty(message = "test")
     private String name;
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "test")
+    @NotEmpty(message = "test")
     private String password;
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "test")
+    @NotEmpty(message = "test")
     private String urlBeforeRedirect;
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "test")
+    @NotEmpty(message = "test")
     private String email;
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "test")
+    @NotEmpty(message = "test")
     private String userName;
 
 

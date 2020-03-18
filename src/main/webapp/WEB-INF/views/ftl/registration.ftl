@@ -2,10 +2,11 @@
 
 
 
+
 <#import "/spring.ftl" as spring/>
 
 
-<section class="h-100">
+<section class="h-100" xmlns:spring="http://www.w3.org/1999/html">
     <header class="container h-100">
         <div class="d-flex align-items-center justify-content-center h-100">
 
@@ -20,11 +21,13 @@
                             <form id="signupform" name="user" action="registration" method="post"
                                   class="form-horizontal" role="form">
                                 <#if message??>
+
                                     <div id="signupalert" class="alert alert-danger">
                                         <p>Error:</p>
                                         <span>${message}</span>
                                     </div>
                                 </#if>
+
                                 <div class="form-group">
                                     <label for="firstname" class="col-md-3 control-label">Name</label>
                                     <div class="col-md-9">
@@ -68,6 +71,14 @@
             </div>
         </div>
     </header>
+    <div>
+        <@spring.bind "urlBeforeRedirect" />
+
+        <#list spring.status.errorMessages as error> <b>${error}</b> <br> </#list>
+
+    </div>
+
+
 </section>
 
 
